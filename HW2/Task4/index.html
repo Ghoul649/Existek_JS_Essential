@@ -1,0 +1,29 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <script>
+        main : while (true)
+        {
+            switch (prompt('Куди прямуєш - r/l/t/b'))
+            {
+                case 'r':
+                    document.writeln('<p>на право<//p>');
+                    break;
+                case 'l':
+                    document.writeln('<p>на ліво<//p>');
+                    break;
+                case 't':
+                    document.writeln('<p>вниз<//p>');
+                    break;
+                case 'b':
+                    document.writeln('<p>вверх<//p>');
+                    break;
+                default:
+                    break main;
+            }
+        }
+        document.writeln('<p>Маршрут складено<//p>');
+    </script>
+</body>
+</html>

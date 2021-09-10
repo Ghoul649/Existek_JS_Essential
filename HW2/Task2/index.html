@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <script>
+        const color = 'red';
+        const maxTimes = 5; 
+        let time = 0;
+        let gameResult = false;
+        while (time++ < maxTimes)
+        {
+            let result = prompt('Спроба ' + time + ':');
+            if (result == color) {
+                gameResult = true;
+                break;
+            }
+        }
+        if (gameResult)
+            document.write('Вітаємо ви виграли із ' + time + ' спроби');
+        else
+            document.write('Ви не вгадали');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <script>
+        function write(string)
+        {
+            document.write(string)
+        }
+        function DrawRectangle(width, height)
+        {
+            write('<pre>')
+            for (let line = 0; line < height; line++)
+            {
+                write('*');
+                let char = line == 0 || line == height - 1 ? '*' : '&nbsp';
+                for (let x = 1; x < width - 1; x++) {
+                    write(char);
+                }
+                write('*\n');
+            }
+            write('<//pre>');
+        }
+        function DrawSquaredTriangle(width, height) {
+            write('<pre>')
+            for (let line = 0; line < height; line++) {
+                write('*');
+                let xpos = width * line / height;
+                let char = line == height - 1 ? '*' : '&nbsp';
+                for (let x = 1; x < xpos; x++)
+                    write(char);
+                write(line == 0 ? '\n':'*\n');
+            }
+            write('<//pre>');
+        }
+        function DrawTriangle(width, height) {
+           
+            write('<pre>')
+            for (let line = 0; line < height; line++) {
+                let d1 = width / 2;
+                let d2 = d1;
+                d1 -= width * line / height / 2;
+                d2 += width * line / height / 2;
+                d1 = parseInt(d1);
+                d2 = Math.round(d2);
+                let char = line == height - 1 ? '*' : '&nbsp';
+                for (let x = 0; x < width; x++)
+                {
+                    if (x == d1 || x == d2)
+                        write('*');
+                    else
+                        write(char);
+                }
+                write('\n');
+            }
+            write('<//pre>');
+        }
+        function DrawRomb(width, height)
+        {
+            height = parseInt(height / 2);
+            write('<pre>')
+            for (let line = 0; line < height; line++) {
+                let d1 = width / 2;
+                let d2 = d1;
+                d1 -= width * line / height / 2;
+                d2 += width * line / height / 2;
+                d1 = parseInt(d1);
+                d2 = Math.round(d2);
+                for (let x = 0; x < width; x++) {
+                    if (x == d1 || x == d2)
+                        write('*');
+                    else
+                        write('&nbsp');
+                }
+                write('\n');
+            }
+            for (let line = height - 1; line >= 0; line--) {
+                let d1 = width / 2;
+                let d2 = d1;
+                d1 -= width * line / height / 2;
+                d2 += width * line / height / 2;
+                d1 = parseInt(d1);
+                d2 = Math.round(d2);
+                for (let x = 0; x < width; x++) {
+                    if (x == d1 || x == d2)
+                        write('*');
+                    else
+                        write('&nbsp');
+                }
+                write('\n');
+            }
+            write('<//pre>');
+        }
+        let type = prompt('Тип фігури:\n1 - прямокутник\n2 - прямокутний трикутник\n3 - рівносторонній трикутник\n4 - ромб');
+        let height = parseInt(prompt('Висота'));
+        let width = parseInt(prompt('Ширина'));
+        switch (type)
+        {
+            case ('1'):
+                DrawRectangle(width, height);
+                break;
+            case ('2'):
+                DrawSquaredTriangle(width, height);
+                break;
+            case ('3'):
+                DrawTriangle(width, height);
+                break;
+            case ('4'):
+                DrawRomb(width, height);
+                break;
+
+        }
+    </script>
+</body>
+</html>

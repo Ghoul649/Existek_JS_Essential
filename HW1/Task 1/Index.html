@@ -1,0 +1,21 @@
+<html>
+	<head></head>
+	<body>
+		<script>
+			let display = (value) => document.write('<div>' + value + '</div>');
+			let x = 6;
+			let y = 15;
+			let z = 4;
+			x += y - x++ * z;
+			display(x);
+			z = --x - y * 5;
+			display(z);
+			y /= x + 5 % z;
+			display(y);
+			z = x++ + y * 5;
+			display(z);
+			x = y - x++ * z;
+			display(x);
+		</script>
+	</body>
+</html>
