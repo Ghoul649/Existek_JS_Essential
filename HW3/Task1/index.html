@@ -1,0 +1,21 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <script>
+        let operations = [];
+        operations['+'] = (a, b) => { return a + b };
+        operations['-'] = (a, b) => { return a - b };
+        operations['*'] = (a, b) => { return a * b };
+        operations['/'] = (a, b) => { return a / b };
+
+        let a = +prompt('A');
+        let b = +prompt('B');
+        let operation = prompt('Операція:');
+        if (undefined == operations[operation])
+            alert('Операцію не знайдено');
+        else
+            document.write('<div>' + a + ' ' + operation + ' ' + b + ' = ' + operations[operation](a, b) + '<//div>');
+    </script>
+</body>
+</html>

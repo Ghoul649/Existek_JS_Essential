@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+</head>
+<body>
+    <script>
+        let simpleNums = [2, 3, 5, 7, 11];
+        let simpleLength = 5;
+        let maxSimple = 11;
+        let maxNumber = 10000000000;
+        let simpleColumns = [1, 2, 1, 4, 3, 2, 1, 2, 1, 2]
+        
+        let GetNextSimple = () =>
+        {
+            
+            let current = maxSimple;
+            main: while (true)
+            {
+                
+                current += simpleColumns[current % 10];
+                for (let i = 0; i < simpleLength; i++)
+                {
+                    if (current / simpleNums[i] < 2)
+                        break;
+                    if (current % simpleNums[i] != 0) {
+                        continue;
+                    } else {
+                        continue main;
+                    }
+                    
+                }
+                simpleNums.push(current);
+                simpleLength++;
+                maxSimple = current;
+                return current;
+            }
+        };
+        let ChachedIsSimple = (num) =>
+        {
+            for (let i = 0; i < simpleLength; i++) {
+                if (num % simpleNums[i] == 0) {
+                    return false;
+                }
+            }
+            return false;
+        }
+        let IsSimple = (num) =>
+        {
+            if (num > maxSimple) {
+                let current = 0;
+                if (ChachedIsSimple(num))
+                    while (current < num) {
+                        current = GetNextSimple();
+                        if (current == num)
+                            return true;
+                        if (num % current == 0)
+                            return false;
+                    }
+                else
+                    return false;
+                return false;
+            }
+        };
+
+        let func = (num) =>
+        {
+            let result = { IsPositive: true, IsSimple: false, IsSpecial: false };
+                
+        };
+        debugger;
+        document.write(IsSimple(12312));
+
+    </script>
+</body>
+</html>
