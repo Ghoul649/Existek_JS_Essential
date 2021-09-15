@@ -3,72 +3,44 @@
 </head>
 <body>
     <script>
-        let simpleNums = [2, 3, 5, 7, 11];
-        let simpleLength = 5;
-        let maxSimple = 11;
-        let maxNumber = 10000000000;
-        let simpleColumns = [1, 2, 1, 4, 3, 2, 1, 2, 1, 2]
-        
-        let GetNextSimple = () =>
+        function IsPrime(num)
         {
-            
-            let current = maxSimple;
-            main: while (true)
+            if (num < 1) { return false; }
+            if (num < 3) { return true; }
+            let i = 1;
+            let max = num / 2;
+            while (++i <= max)
             {
-                
-                current += simpleColumns[current % 10];
-                for (let i = 0; i < simpleLength; i++)
-                {
-                    if (current / simpleNums[i] < 2)
-                        break;
-                    if (current % simpleNums[i] != 0) {
-                        continue;
-                    } else {
-                        continue main;
-                    }
-                    
-                }
-                simpleNums.push(current);
-                simpleLength++;
-                maxSimple = current;
-                return current;
+                if (num % i == 0) { return false; }
             }
-        };
-        let ChachedIsSimple = (num) =>
-        {
-            for (let i = 0; i < simpleLength; i++) {
-                if (num % simpleNums[i] == 0) {
-                    return false;
-                }
-            }
-            return false;
+            return true;
         }
-        let IsSimple = (num) =>
-        {
-            if (num > maxSimple) {
-                let current = 0;
-                if (ChachedIsSimple(num))
-                    while (current < num) {
-                        current = GetNextSimple();
-                        if (current == num)
-                            return true;
-                        if (num % current == 0)
-                            return false;
-                    }
-                else
-                    return false;
-                return false;
-            }
-        };
 
-        let func = (num) =>
+        function IsPositive(num)
         {
-            let result = { IsPositive: true, IsSimple: false, IsSpecial: false };
-                
-        };
-        debugger;
-        document.write(IsSimple(12312));
+            return num > 0;
+        }
 
+        function IsSpecial(num)
+        {
+            return num % 270 == 0;
+        }
+
+        function func(number)
+        {
+            let num = parseInt(number);
+            if (isNaN(num))
+                return { IsValid: false };
+            return {
+                IsPositive: IsPositive(num),
+                IsPrime: IsPrime(num),
+                IsSpecial: IsSpecial(num),
+                IsValid: true
+            };
+        }
+        let res = func(prompt('Number:'));
+        document.write(JSON.stringify(res));
+        
     </script>
 </body>
 </html>

@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+    <script>
+        const N = 5;
+        function NextInt(from, to)
+        {
+            return Math.floor(Math.random() * (to - from) + from)
+        }
+        if (!isNaN(N)) {
+            let array = new Array(N);
+            for (let i = 0; i < N; i++) {
+                let a = new Array(N);
+                array[i] = a;
+                for (let j = 0; j < N; j++) {
+                    let val = NextInt(-5, 6);
+                    if (i == j && val < 0) { val = 0; }
+                    a[j] = val;
+                }
+            }
+            document.write(JSON.stringify(array));
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+    <script>
+        function NextInt(from, to)
+        {
+            return Math.floor(Math.random() * (to - from) + from)
+        }
+        let N = parseInt(prompt('N:'));
+        if (!isNaN(N)) {
+            let array = new Array(N);
+            for (let i = 0; i < N; i++) {
+                array[i] = NextInt(-100, 100);
+            }
+            let sum = 0;
+            let max = -Infinity;
+            let min = Infinity;
+            let even = [];
+            array.forEach((val) => {
+                sum += val;
+                max = max < val ? val : max;
+                min = min > val ? val : min;
+                if (val % 2 == 0) { even.push(val) };
+            });
+            let avg = sum / N;
+            res = { Max: max, Min: min, Sum: sum, Avg: avg, Even: even };
+            document.write(JSON.stringify(res));
+        }
+
+    </script>
+</body>
+</html>
